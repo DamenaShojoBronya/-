@@ -1,0 +1,101 @@
+/*清除网页格式，不管有用没用可以都加上*/
+* {
+    margin: 0;
+    padding: 0
+}
+
+li {
+    list-style: none
+}
+
+
+.header {
+    height: 66px;
+    width: 100%;
+    /*固定在最上方*/
+    position: fixed;
+    /*rgba前三个参数控制颜色，第四个参数alpha通道控制透明度*/
+    background-color: rgba(17, 17, 17, 0.75);
+    /*加一层阴影*/
+    box-shadow: 0px 3px 7px 0px rgb(0 0 0 / 35%);
+    display: flex;
+}
+.header_logo{
+    height: 66px;
+    width: 316px;
+    background: url('assets/header-logo.png') no-repeat center;
+    background-size: cover;
+}
+.header_navwrap {
+    height: 66px;
+    width: 610px;
+    /*你可以像这样父元素用弹性盒子自动调整*/
+    display: flex;
+    /* 设置弹性盒子元素在主轴（横轴）方向上的对齐方式 */
+    justify-content: space-around;
+}
+
+.header_navitem {
+    /* 或在子元素用margin手动调整子元素边距。如下 */
+    /* margin: 0 30px; */
+    line-height: 66px;
+    font-size: 17px;
+    font-weight: normal;
+    font-stretch: normal;
+    color: #ccc;
+    text-align: center;
+    /*光标移动到元素上时变成手掌*/
+    cursor: pointer;
+    /* 清除文本装饰线，下划线 */
+    text-decoration: none;
+}
+
+.header_right{
+    height: 66px;
+    width: 271px;
+    margin-right:30px;
+    display: flex;
+    /* 自动设置边距，令其靠右 */
+    margin-left: auto;
+    justify-content: space-between;
+}
+.header_cs,
+.login_btn{
+    display: flex;
+    /* 让文字和图标的中线对齐，默认是底部对齐 */
+    align-items: center;
+    cursor: pointer;
+}
+.header_cs span,
+.login_btn span{
+    font-size: 17px;
+    color: #ccc;
+}
+.header_cs img,
+.login_btn img{
+    margin-left: 18px;
+    width: 27px;
+    height: 27px;
+    opacity: 0.6;
+}
+
+.mainBox {
+    background: url('assets/main-bg.png') no-repeat center;
+    background-size: cover;
+    height: 1010px;
+    width: 100%;
+    display: flex;
+}
+
+/*重复的部分可以这样 在代码量多的时候好用*/
+.mainBox_left,
+.mainBox_right {
+    height: 1010px;
+    width: 30%;
+    box-shadow: 0px 3px 7px 0px rgb(0 0 0 / 35%);
+}
+
+.mainBox_middle {
+    /*该属性能让弹性盒子子元素自动占满一行中剩余的宽度/高度*/
+    flex: auto;
+}
