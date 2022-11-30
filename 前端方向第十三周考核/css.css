@@ -20,12 +20,14 @@ li {
     box-shadow: 0px 3px 7px 0px rgb(0 0 0 / 35%);
     display: flex;
 }
-.header_logo{
+
+.header_logo {
     height: 66px;
     width: 316px;
     background: url('assets/header-logo.png') no-repeat center;
     background-size: cover;
 }
+
 .header_navwrap {
     height: 66px;
     width: 610px;
@@ -38,7 +40,7 @@ li {
 .header_navitem {
     /* 或在子元素用margin手动调整子元素边距。如下 */
     /* margin: 0 30px; */
-    line-height: 66px;
+    line-height: 58px;
     font-size: 17px;
     font-weight: normal;
     font-stretch: normal;
@@ -48,31 +50,49 @@ li {
     cursor: pointer;
     /* 清除文本装饰线，下划线 */
     text-decoration: none;
+    /* 用上边框来做上划线跟随效果 */
+    border-top: 5px solid #69e0ff;
+    transform: translate(-50%) scaleX(1);
 }
 
-.header_right{
+/* 伪类:hover表示鼠标悬停时 */
+.header_navitem:hover {
+    /* 添加文本阴影 */
+    text-shadow: 0 0 10px #69e0ff, 0 0 20px #69e0ff, 0 0 40px #69e0ff;
+    color: #fff;
+}
+
+.header_right {
     height: 66px;
     width: 271px;
-    margin-right:30px;
+    margin-right: 30px;
     display: flex;
     /* 自动设置边距，令其靠右 */
     margin-left: auto;
     justify-content: space-between;
 }
+
 .header_cs,
-.login_btn{
+.login_btn {
     display: flex;
     /* 让文字和图标的中线对齐，默认是底部对齐 */
     align-items: center;
     cursor: pointer;
 }
+
 .header_cs span,
-.login_btn span{
+.login_btn span {
     font-size: 17px;
     color: #ccc;
 }
+
+.header_cs span:hover,
+.login_btn span:hover {
+    color: #fff;
+}
+
 .header_cs img,
-.login_btn img{
+.login_btn img {
     margin-left: 18px;
     width: 27px;
     height: 27px;
