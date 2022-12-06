@@ -1,13 +1,8 @@
-/*清除网页格式，不管有用没用可以都加上*/
+/*清除网页格式*/
 * {
     margin: 0;
     padding: 0
 }
-
-li {
-    list-style: none
-}
-
 
 .header {
     height: 66px;
@@ -36,7 +31,6 @@ li {
     /* 设置弹性盒子元素在主轴（横轴）方向上的对齐方式 */
     justify-content: space-around;
 }
-
 .header_navitem {
     /* 或在子元素用margin手动调整子元素边距。如下 */
     /* margin: 0 30px; */
@@ -51,8 +45,8 @@ li {
     /* 清除文本装饰线，下划线 */
     text-decoration: none;
     /* 用上边框来做上划线跟随效果 */
-    border-top: 5px solid #69e0ff;
-    transform: translate(-50%) scaleX(1);
+    /* border-top: 5px solid #69e0ff;
+    transform: translate(-50%) scaleX(1); */
 }
 
 /* 伪类:hover表示鼠标悬停时 */
@@ -61,7 +55,24 @@ li {
     text-shadow: 0 0 10px #69e0ff, 0 0 20px #69e0ff, 0 0 40px #69e0ff;
     color: #fff;
 }
-
+.header_navitem::before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 5px;
+    /* 触发hover前隐藏元素但占位，避免影响其他盒子 */
+    visibility: hidden;
+    /* 定义了元素沿X轴缩放，0是消失，1是100%大小 */
+    transform : scaleX(0);
+}
+.header_navitem:hover::before {
+    /* 控制CSS动画时间都能使用 */
+    transition: all 0.3s ease-out;
+    background-color:rgb(105, 224, 255);
+    visibility: visible;
+    /* 鼠标移上去后，伪类从零放大到100%，中心点位于元素中心，视觉上就是从中间向两边展开 */
+    transform : scaleX(1);
+}
 .header_right {
     height: 66px;
     width: 271px;
