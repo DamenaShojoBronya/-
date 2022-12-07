@@ -3,94 +3,142 @@
   margin: 0;
   padding: 0
 }
-
-.masonry {
-  width: 1680px;
-  margin: 20px auto;
-  columns: 4;
-  column-gap: 30px;
+.carousel{
+  margin: 0 auto;
+  width: 1440px;
+  height: 420px;
 }
-
-/* 子元素想用百分比获取父元素高度，父元素必须设置定位 */
-.item {
-  width: 100%;
-  break-inside: avoid;
-  margin-bottom: 30px;
+.carousel_bg{
+  /* 通过不设高度且子元素脱离文档流，让内容(content缩写cont)能够显示在背景图bg上 */
   position: relative;
 }
-
-.item img {
-  width: 100%;
-  border-radius: 2%;
-  box-shadow: 0px 3px 7px 0px rgb(0 0 0 / 35%);
-}
-
-.item img:hover {
-  box-shadow: 5px 6px 14px 5px rgb(0 0 0 / 35%);
-}
-
-/* 这里设置绝对定位，于是text盒子能够叠加在img之上 */
-.text {
+.carousel_bg li {
+  list-style: none;
+  background-size: cover;
+  /* 控制轮播图切换时间 */
+  transition: all 3s;
+  /* 不透明度为0，即完全透明 */
+  opacity: 0;
+  /* 设置子绝父相定位，让子元素基于父元素来定位 */
   position: absolute;
-  height: 100%;
+}
+
+.carousel_bg li.bg__active {
+  width: 1440px;
+  height: 420px;
+  /* 通过设置当前显示页面不透明而其他页面透明达到轮播的效果 */
+  opacity: 1;
+  /* 通过设置层级，保证位于其他开启定位的元素之下 */
+  z-index: -1;
+}
+.carousel_cont {
+  width: 1440px;
+  height: 420px;
+  /* 这种排列元素的问题都交给弹性盒子，不赘述了 */
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  /* 弹性盒子使两个子元素分别贴着父盒子首尾，方便后续调整 */
-  justify-content: space-between;
   align-items: flex-start;
-  margin-left: 30px;
-}
-.text span{
-  display: flex;
+  justify-content: space-around;
   flex-direction: column;
-  align-items: baseline;
-  margin-left:-20px;
 }
-.text span h2 {
-  color: white;
-  margin-top: 50px;
-  font-size: 30px;
+.cont_tittle {
+  /* 通过上下边距为0，左右边距自动实现水平居中 */
+  margin: 0 auto;
+  /* 要放字体文件，懒得找了 演示一下 */
+  font-family: 'SourceHanSansCN-Bold';
+  font-weight: bold;
+  font-size: 34px;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 34px;
 }
 
-.text span p {
-  color: white;
+.cont_nav {
+  width: 1440px;
+  height: 35.5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.cont_nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.cont_nav ul li {
+  font-family: 'SourceHanSansCN-Regular';
   font-size: 18px;
+  line-height: 18px;
+  margin-bottom: 4px;
+  padding-left: 20.5px;
+  padding-right: 20.5px;
+  height: 34.5px;
+  color: #FFFFFF;
+  text-align: justify;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+}
+.cont_nav ul li:before {
+  content: "";
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 100%;
+  width: 0;
+  height: 100%;
+  border-bottom: 4px solid #D7000F;
+  transition: 0.2s all linear;
+  margin-left:20px;
 }
 
-.text button {
-  color: grey;
-  margin-bottom: 25px;
-  border:0px solid;
-  border-radius: 10%;
-  opacity: 0.70;
-}
-.text p {
-  color: black;
-  margin:7px 15px;
-  font-size: 18px;
+.cont_nav ul li:hover:before {
+  width: 72px;
+  left: 0;
 }
 
-
-@media screen and (min-width: 1024px) and (max-width: 1439.98px) {
-  .masonry {
-    width: 96vw;
-    columns: 3;
-    column-gap: 20px;
-  }
+.cont_nav ul li:hover~li:before {
+  left: 0;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1023.98px) {
-  .masonry {
-    width: 96vw;
-    columns: 2;
-    column-gap: 20px;
-  }
+.line3 {
+  width: 1321px;
+  border: 1px solid #FFFFFF;
+  background-color: #FFFFFF;
 }
 
-@media screen and (max-width: 767.98px) {
-  .masonry {
-    width: 96vw;
-    columns: 1;
-  }
+.content {
+  width: 10000px;
+  height: 162px;
+  display: flex;
+  flex-direction: row;
+  scroll-behavior: smooth;
+  overflow: hidden;
+}
+
+.content li {
+  list-style: none;
+  -webkit-transition: 0.6s;
+  -moz-transition: 0.6s;
+  -ms-transition: 0.6s;
+  -o-transition: 0.6s;
+  transition: 1s;
+  visibility: 0;
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+.content li.ContActive {
+  display: block;
+  opacity: 1;
+  visibility: 1;
+  width: 1000px;
 }
