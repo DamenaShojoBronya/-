@@ -3,15 +3,18 @@
   margin: 0;
   padding: 0
 }
-.carousel{
+
+.carousel {
   margin: 0 auto;
   width: 1440px;
   height: 420px;
 }
-.carousel_bg{
+
+.carousel_bg {
   /* 通过不设高度且子元素脱离文档流，让内容(content缩写cont)能够显示在背景图bg上 */
   position: relative;
 }
+
 .carousel_bg li {
   list-style: none;
   background-size: cover;
@@ -31,6 +34,7 @@
   /* 通过设置层级，保证位于其他开启定位的元素之下 */
   z-index: -1;
 }
+
 .carousel_cont {
   width: 1440px;
   height: 420px;
@@ -40,6 +44,7 @@
   justify-content: space-around;
   flex-direction: column;
 }
+
 .cont_tittle {
   /* 通过上下边距为0，左右边距自动实现水平居中 */
   margin: 0 auto;
@@ -86,6 +91,7 @@
   position: relative;
   cursor: pointer;
 }
+
 .cont_nav ul li:before {
   content: "";
   position: absolute;
@@ -96,7 +102,7 @@
   height: 100%;
   border-bottom: 4px solid #D7000F;
   transition: 0.2s all linear;
-  margin-left:20px;
+  margin-left: 20px;
 }
 
 .cont_nav ul li:hover:before {
@@ -114,7 +120,7 @@
   background-color: #FFFFFF;
 }
 
-.content {
+.cont_text {
   width: 10000px;
   height: 162px;
   display: flex;
@@ -123,7 +129,7 @@
   overflow: hidden;
 }
 
-.content li {
+.cont_text li {
   list-style: none;
   -webkit-transition: 0.6s;
   -moz-transition: 0.6s;
@@ -134,9 +140,38 @@
   opacity: 0;
   width: 0;
   overflow: hidden;
+  display: flex;
 }
 
-.content li.ContActive {
+.cont_text li h3 {
+  font-family: 'SourceHanSansCN-Bold';
+  font-weight: bold;
+  font-size: 28px;
+  color: #FFFFFF;
+  line-height: 28px;
+  width: 120px;
+  overflow: hidden;
+}
+
+.cont_text li p {
+  font-family: 'SourceHanSansCN-Regular';
+  font-size: 18px;
+  color: #FFFFFF;
+  line-height: 26px;
+  width: 900px;
+  overflow: hidden;
+}
+.cont_text li .button{
+  width: 124px;
+  height: 42px;
+  background: rgba(216, 216, 216, 0.00);
+  border: 1px solid #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cont_text li.text__active {
   display: block;
   opacity: 1;
   visibility: 1;
