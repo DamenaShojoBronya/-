@@ -8,6 +8,12 @@
   margin: 0 auto;
   width: 1440px;
   height: 420px;
+  /* vh和vw是视窗单位，需要加定位 */
+  position: absolute;
+  /* 向下移动视窗高度的50%，再向上移动自身高度的50%，则必然居中。宽度同理 */
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
 }
 
 .carousel_bg {
@@ -19,7 +25,7 @@
   list-style: none;
   background-size: cover;
   /* 控制轮播图切换时间 */
-  transition: all 3s;
+  transition: all 2s;
   /* 不透明度为0，即完全透明 */
   opacity: 0;
   /* 设置子绝父相定位，让子元素基于父元素来定位 */
@@ -29,7 +35,7 @@
 .carousel_bg li.bg__active {
   width: 1440px;
   height: 420px;
-  /* 通过设置当前显示页面不透明而其他页面透明达到轮播的效果 */
+  /* 通过设置当前显示页面不透明而其他页面透明达到幻灯片轮播的效果 */
   opacity: 1;
   /* 通过设置层级，保证位于其他开启定位的元素之下 */
   z-index: -1;
@@ -43,6 +49,7 @@
   align-items: flex-start;
   justify-content: space-around;
   flex-direction: column;
+  position: absolute;
 }
 
 .cont_tittle {
@@ -79,20 +86,18 @@
   font-size: 18px;
   line-height: 18px;
   margin-bottom: 4px;
-  padding-left: 20.5px;
-  padding-right: 20.5px;
+  padding-left: 20px;
+  padding-right: 20px;
   height: 34.5px;
   color: #FFFFFF;
   text-align: justify;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
   position: relative;
   cursor: pointer;
 }
 
-.cont_nav ul li:before {
+/* 用伪元素::before来做导航栏的下滑线并实现纯CSS下划线跟随，不具备功能。
+切换的控制是由JS切换「当前活动li」完成的 */
+.cont_nav ul li::before {
   content: "";
   position: absolute;
   z-index: 10;
@@ -101,21 +106,22 @@
   width: 0;
   height: 100%;
   border-bottom: 4px solid #D7000F;
-  transition: 0.2s all linear;
+  transition: 0.1s all linear;
   margin-left: 20px;
 }
 
-.cont_nav ul li:hover:before {
+/* 奇技淫巧，看看就好 */
+.cont_nav ul li:hover::before {
   width: 72px;
   left: 0;
 }
 
-.cont_nav ul li:hover~li:before {
+.cont_nav ul li:hover~li::before {
   left: 0;
 }
 
-.line3 {
-  width: 1321px;
+.line {
+  width: 1000px;
   border: 1px solid #FFFFFF;
   background-color: #FFFFFF;
 }
@@ -127,20 +133,21 @@
   flex-direction: row;
   scroll-behavior: smooth;
   overflow: hidden;
+  margin-left: 250px;
 }
 
 .cont_text li {
-  list-style: none;
-  -webkit-transition: 0.6s;
-  -moz-transition: 0.6s;
-  -ms-transition: 0.6s;
-  -o-transition: 0.6s;
-  transition: 1s;
-  visibility: 0;
-  opacity: 0;
+  /* 通过设置li宽度为0而活动li存在宽度，再设置过渡效果transition，
+  让前一个li宽度渐渐消失同时后一个li慢慢出现，产生滑动切换的视觉效果 */
   width: 0;
+  transition: 1s;
+  list-style: none;
   overflow: hidden;
   display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* 通过设置li透明而活动li不透明，让切换的同时前一个li渐渐隐藏 */
+  opacity: 0;
 }
 
 .cont_text li h3 {
@@ -161,7 +168,8 @@
   width: 900px;
   overflow: hidden;
 }
-.cont_text li .button{
+
+.cont_text li .button {
   width: 124px;
   height: 42px;
   background: rgba(216, 216, 216, 0.00);
@@ -169,11 +177,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  content: normal;
 }
 
+.cont_text li .button p {
+  width: auto;
+  font-family: 'SourceHanSansCN-Regular';
+  font-size: 16px;
+  color: #FFFFFF;
+  text-align: justify;
+  line-height: 16px;
+}
+
+/* 活动li，后面带__artive */
 .cont_text li.text__active {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   opacity: 1;
-  visibility: 1;
   width: 1000px;
 }
