@@ -1,8 +1,0 @@
-class IntegralSettlement {
-	public constructor() {
-	}
-
-	
-
-	
-}

@@ -1,7 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import About from "@/views/About";
-import Activities from "@/views/Activities";
-import Achievements from "@/views/Achievements";
+
 import TreasureView from "@/views/TreasureView";
 import RecordView from "@/views/RecordView";
 import ShortcutView from "@/views/ShortcutView";
@@ -22,8 +20,8 @@ import GreenEyesCatView from "@/views/beautiful/GreenEyesCatView";
 import HoverButtonView from "@/views/gadget/HoverButtonView";
 import TictactoeView from "@/views/games/TictactoeView";
 
-const routes = [
 
+const routes = [
   {
     path: '/',
     name:'index',
@@ -36,7 +34,6 @@ const routes = [
     name: 'treasure',
     component: TreasureView,
     children:[
-
       {
         path: 'gallery',
         name: 'gallery',
@@ -54,24 +51,14 @@ const routes = [
       },
     ]
   },
-  
+
+  //记录线
   {
-    path: '/about',
-    name:'about',
-    component: About
+    path:'/record',
+    name:'record',
+    component: RecordView
   },
 
-  {
-    path: '/activities',
-    name:'activities',
-    component: Activities
-  },
-
-  {
-    path: '/achievements',
-    name:'achievements',
-    component: Achievements
-  },
 
   //  喜捷径
   {

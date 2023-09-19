@@ -1,0 +1,6 @@
+
+.notice {
+	display: block;
+	background-color: "#FFEFD5";
+}
+

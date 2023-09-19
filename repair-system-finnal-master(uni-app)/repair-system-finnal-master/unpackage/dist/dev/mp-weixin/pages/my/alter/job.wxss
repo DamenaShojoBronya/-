@@ -1,0 +1,6 @@
+
+.button{
+	width: 90%;
+	background-color: #55aa7f;
+}
+

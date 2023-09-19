@@ -85,12 +85,10 @@
 
 #tittle-right {
     margin-left: 200px;
-    cursor:auto;
 }
 
 #tittle-buttom-tele {
     margin-right: 39px;
-    cursor:auto;
 }
 
 #tittle-buttom-wrap-3 {
@@ -128,7 +126,7 @@
 }
 
 .header-bottom-content>h3 {
-    font-family: 'SourceHanSansCN-Bold';
+    font-family: SourceHanSansCN-Bold;
     font-size: 28px;
     color: #FFFFFF;
     line-height: 28px;
@@ -386,64 +384,53 @@ li.tabactive {
     flex-direction: row;
 }
 
-.content-2-list li {
-    font-family: 'SourceHanSansCN-Regular';
+.content-2-list>li {
     font-size: 18px;
     line-height: 18px;
-    margin-bottom: 4px;
-    padding-left: 20.5px;
-    padding-right: 20.5px;
+    margin-left: 20.5px;
+    margin-right: 20.5px;
     height: 34.5px;
+    display: inline;
+    font-family: 'SourceHanSansCN-Regular';
     color: #FFFFFF;
     text-align: justify;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    position: relative;
-    cursor: pointer;
 }
 
-.content-2-list li:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 100%;
-    width: 0;
-    height: 100%;
-    border-bottom: 4px solid #D7000F;
-    transition: 0.2s all linear;
-    margin-left:20px;
-}
-
-.content-2-list li:hover:before {
-    width: 72px;
-    left: 0;
-}
-
-.content-2-list li:hover~li:before {
-    left: 0;
-}
-
-.underline-list {
-    width: 1243px;
+.underline {
+    width: 69px;
     height: 4px;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: row;
+    background: #D7000F;
+    visibility: hidden;
+    -webkit-transition: 0.6s;
+    -moz-transition: 0.6s;
+    -ms-transition: 0.6s;
+    -o-transition: 0.6s;
+    transition: 1s;
+    visibility: 0;
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.content-2-list>li:hover .underline {
+    visibility: visible;
+    opacity: 1;
+    visibility: 1;
+    width: 72px;
 }
 
 .content {
     width: 10000px;
-    height: 162px;
+    height:162px;
     display: flex;
     flex-direction: row;
-    scroll-behavior: smooth;
+    scroll-behavior:smooth;
     overflow: hidden;
 }
-
 .content li {
     list-style: none;
     -webkit-transition: 0.6s;
@@ -455,6 +442,7 @@ li.tabactive {
     opacity: 0;
     width: 0;
     overflow: hidden;
+    /* 由于是滑入，因此需要这个div的宽度从0慢慢变大，变到300px，效果就是从侧边滑进来了。 */
 }
 
 .content li.ContActive {
@@ -467,11 +455,10 @@ li.tabactive {
 .line3 {
     width: 1321px;
     border: 1px solid #FFFFFF;
-    background-color: #FFFFFF;
 }
 
 .content-2-bottom {
-    position: relative;
+    position:relative;
     width: auto;
     height: 162px;
     margin-left: 75px;
@@ -487,7 +474,7 @@ li.tabactive {
     font-size: 28px;
     color: #FFFFFF;
     line-height: 28px;
-    width: 120px;
+    width:120px;
     overflow: hidden;
 }
 
@@ -497,10 +484,9 @@ li.tabactive {
     font-size: 18px;
     color: #FFFFFF;
     line-height: 26px;
-    width: 900px;
+    width:900px;
     overflow: hidden;
 }
-
 .button {
     width: 124px;
     height: 42px;
@@ -513,7 +499,6 @@ li.tabactive {
 
 .button:hover {
     background-color: burlywood;
-    cursor: pointer;
 }
 
 .button>p {
@@ -625,7 +610,6 @@ li.tabactive {
 
 .button2:hover {
     background-color: burlywood;
-    cursor: pointer;
 }
 
 .button2>p {
@@ -648,7 +632,7 @@ li.tabactive {
     background: #f2f2f2bb;
     margin: 0 auto;
     position: relative;
-    z-index: 0;
+    z-index: -10;
 }
 
 .pic-ls {
@@ -707,6 +691,8 @@ li.tabactive {
     visibility: hidden;
 }
 
+
+
 li.pic-ls1 {
     width: 440px;
     height: 342px;
@@ -733,41 +719,35 @@ li.pic-ls1 {
     height: 453px;
     background: url('assets/产业动态-图1.png');
 }
-
-.industry-dynamics-1>h3 {
+.industry-dynamics-1>h3{
     font-family: 'SourceHanSansCN-Bold';
     font-size: 28px;
     color: #FFFFFF;
     line-height: 18px;
-    margin-top: 94px;
-    margin-left: 50px;
+    margin-top:94px;
+    margin-left:50px;
     position: absolute;
-    
 }
-
-.industry-dynamics-1>p {
+.industry-dynamics-1>p{
     font-family: 'SourceHanSansCN-Regular';
     font-size: 18px;
-    width: 766px;
+    width:766px;
     color: #FFFFFF;
     text-align: justify;
     line-height: 26px;
-    margin-top: 133px;
-    margin-left: 50px;
+    margin-top:133px;
+    margin-left:50px;
     position: absolute;
-    cursor: text;
 }
-
-.industry-dynamics-1>.button {
-    background: rgba(216, 216, 216, 0.00);
+.industry-dynamics-1>.button{
+    background: rgba(216,216,216,0.00);
     border: 1px solid #FFFFFF;
     border-radius: 6px;
     border-radius: 6px;
-    margin-top: 224px;
-    margin-left: 50px;
+    margin-top:224px;
+    margin-left:50px;
     position: absolute;
 }
-
 .industry-dynamics-wrap {
     margin: 0 auto;
     width: 1320px;
@@ -796,7 +776,7 @@ li.pic-ls1 {
 
 .industry-dynamics-text {
     height: 153px;
-    width: auto;
+    width:auto;
     border: 0.1px solid #FFFFFF;
     background: #FFFFFF;
 }
